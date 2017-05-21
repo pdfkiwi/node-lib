@@ -1,0 +1,7 @@
+{
+    "name"        : "@pdfkiwi/js-lib",
+    "version"     : "0.1.0",
+    "description" : "A Js library for interacting with Pdf.kiwi API",
+    "repository"  : "git@github.com:pdfkiwi/js-lib.git",
+    "license"     : "MIT"
+}
