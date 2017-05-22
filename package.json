@@ -8,6 +8,7 @@
         "build"      : "babel src -d lib/",
         "prepublish" : "yarn run build",
         "test"       : "cross-env NODE_ENV=test nyc _mocha",
+        "test:watch" : "mocha --watch",
         "lint"       : "eslint --max-warnings 0 --ext .js src test/specs"
     },
     "devDependencies": {
