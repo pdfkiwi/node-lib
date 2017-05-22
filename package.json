@@ -9,7 +9,7 @@
         "prepublish"    : "yarn run build",
         "test"          : "yarn run build && babel-node node_modules/.bin/_mocha --recursive test/specs/*.test.js",
         "test:coverage" : "yarn run build && babel-node node_modules/.bin/istanbul cover --report html node_modules/.bin/_mocha -- --recursive test/specs/*.test.js",
-        "lint"          : "eslint --max-warnings 0 --ext .js src test/specs",
+        "lint"          : "eslint --max-warnings 0 --ext .js src test/specs"
     },
     "devDependencies": {
         "babel-cli"                 : "^6.24.1",
