@@ -1,16 +1,16 @@
-# pdfkiwi/js-lib 
+# pdfkiwi-node
+
+> A node library for interacting with Pdf.kiwi API
 
 [![Build Status](https://travis-ci.org/pdfkiwi/js-lib.svg?branch=master)](https://travis-ci.org/pdfkiwi/js-lib)
 [![Coverage Status](https://coveralls.io/repos/github/pdfkiwi/js-lib/badge.svg?branch=master)](https://coveralls.io/github/pdfkiwi/js-lib?branch=master)
 
 ## Installation
 
-Via Npm / Yarn:
-
 ```bash
 # - Npm
-npm install @pdfkiwi/js-lib --save
+npm install pdfkiwi-node --save
 
 # - Yarn
-yarn add @pdfkiwi/js-lib
+yarn add pdfkiwi-node
 ```
