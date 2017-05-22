@@ -2,3 +2,5 @@
 yarn.lock
 
 /lib
+
+/test/coverage
