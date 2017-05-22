@@ -16,3 +16,6 @@ before_install:
 
 script :
     - yarn run test:coverage
+
+after_script:
+  - cat ./test/coverage/lcov.info | ./node_modules/.bin/coveralls
