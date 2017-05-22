@@ -5,24 +5,24 @@
     "repository"  : "git@github.com:pdfkiwi/node-lib.git",
     "license"     : "MIT",
     "scripts"     : {
-        "build"         : "babel src -d lib/",
-        "prepublish"    : "yarn run build",
-        "pretest"       : "yarn run build && yarn run lint",
-        "test"          : "mocha",
-        "test:coverage" : "babel-node node_modules/.bin/istanbul cover --report html _mocha",
-        "lint"          : "eslint --max-warnings 0 --ext .js src test/specs"
+        "build"      : "babel src -d lib/",
+        "prepublish" : "yarn run build",
+        "test"       : "cross-env NODE_ENV=test nyc _mocha",
+        "lint"       : "eslint --max-warnings 0 --ext .js src test/specs"
     },
     "devDependencies": {
         "babel-cli"                 : "^6.24.1",
+        "babel-plugin-istanbul"     : "^4.1.3",
         "babel-preset-es2015"       : "^6.24.1",
         "babel-register"            : "^6.24.1",
         "chai"                      : "^3.5.0",
         "coveralls"                 : "^2.13.1",
+        "cross-env"                 : "^5.0.0",
         "eslint"                    : "^3.19.0",
         "eslint-config-airbnb-base" : "^11.2.0",
         "eslint-plugin-import"      : "^2.2.0",
-        "istanbul"                  : "^0.4.5",
-        "mocha"                     : "^3.4.1"
+        "mocha"                     : "^3.4.1",
+        "nyc"                       : "^10.3.2"
     },
     "engines": {
         "node": ">= 4"

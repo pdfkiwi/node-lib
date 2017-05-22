@@ -1,0 +1,6 @@
+{
+    "report-dir" : "./test/coverage",
+    "reporter"   : ["lcov", "html", "text-summary"],
+    "sourceMap"  : false,
+    "instrument" : false
+}

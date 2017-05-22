@@ -1,4 +1,4 @@
-const Pdfkiwi = require('../../lib/pdfkiwi');
+const Pdfkiwi = require('../../src/pdfkiwi');
 
 describe('Pdfkiwi', () => {
 });
