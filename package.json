@@ -4,9 +4,21 @@
     "description" : "A node library for interacting with Pdf.kiwi API",
     "repository"  : "git@github.com:pdfkiwi/node-lib.git",
     "license"     : "MIT",
+    "scripts"     : {
+        "build"      : "babel src -d lib/",
+        "prepublish" : "yarn run build",
+    },
     "devDependencies": {
+        "babel-cli"                 : "^6.24.1",
+        "babel-preset-env"          : "^1.5.0",
+        "chai"                      : "^3.5.0",
         "eslint"                    : "^3.19.0",
         "eslint-config-airbnb-base" : "^11.2.0",
-        "eslint-plugin-import"      : "^2.2.0"
+        "eslint-plugin-import"      : "^2.2.0",
+        "istanbul"                  : "^0.4.5",
+        "mocha"                     : "^3.4.1"
+    },
+    "engines": {
+        "node": ">= 4"
     }
 }

@@ -1,3 +1,7 @@
-test
+/src
+/test
 
-.editorconfig
+/.*
+
+**/*.md
+**/*.lock
