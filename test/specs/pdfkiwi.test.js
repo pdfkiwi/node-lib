@@ -52,7 +52,7 @@ describe(`Pdfkiwi`, () => {
             expect(client).to.respondTo('convertHtml');
         });
 
-        it(`should throw and error when called with invalid html parameter`, () => {
+        it(`should throw and error when called with invalid or missing html parameter`, () => {
             _basicMock();
 
             const promises  = [];
