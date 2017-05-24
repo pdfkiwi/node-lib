@@ -5,7 +5,7 @@
     "repository"  : "git@github.com:pdfkiwi/node-lib.git",
     "license"     : "MIT",
     "scripts"     : {
-        "build"      : "babel src -d lib/",
+        "build"      : "rimraf lib && babel src -d lib/",
         "prepublish" : "yarn run build",
         "test"       : "cross-env NODE_ENV=test nyc _mocha",
         "test:watch" : "cross-env NODE_ENV=test mocha --watch",
@@ -33,7 +33,8 @@
         "mocha"                                 : "^3.4.1",
         "nock"                                  : "^9.0.13",
         "nyc"                                   : "^10.3.2",
-        "qs"                                    : "^6.4.0"
+        "qs"                                    : "^6.4.0",
+        "rimraf"                                : "^2.6.1"
     },
     "engines": {
         "node": ">= 4"
