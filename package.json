@@ -8,25 +8,32 @@
         "build"      : "babel src -d lib/",
         "prepublish" : "yarn run build",
         "test"       : "cross-env NODE_ENV=test nyc _mocha",
-        "test:watch" : "mocha --watch",
+        "test:watch" : "cross-env NODE_ENV=test mocha --watch",
         "lint"       : "eslint --max-warnings 0 --ext .js src test/specs"
     },
     "dependencies": {
-        "lodash.isplainobject" : "^4.0.6"
+        "lodash.isplainobject" : "^4.0.6",
+        "p-queue"              : "^1.0.0",
+        "promise-defer"        : "^1.0.0",
+        "request"              : "^2.81.0"
     },
     "devDependencies": {
-        "babel-cli"                 : "^6.24.1",
-        "babel-plugin-istanbul"     : "^4.1.3",
-        "babel-preset-es2015"       : "^6.24.1",
-        "babel-register"            : "^6.24.1",
-        "chai"                      : "^3.5.0",
-        "coveralls"                 : "^2.13.1",
-        "cross-env"                 : "^5.0.0",
-        "eslint"                    : "^3.19.0",
-        "eslint-config-airbnb-base" : "^11.2.0",
-        "eslint-plugin-import"      : "^2.2.0",
-        "mocha"                     : "^3.4.1",
-        "nyc"                       : "^10.3.2"
+        "babel-cli"                             : "^6.24.1",
+        "babel-plugin-istanbul"                 : "^4.1.3",
+        "babel-plugin-transform-builtin-extend" : "^1.1.2",
+        "babel-preset-es2015"                   : "^6.24.1",
+        "babel-register"                        : "^6.24.1",
+        "chai"                                  : "^3.5.0",
+        "chai-as-promised"                      : "^6.0.0",
+        "coveralls"                             : "^2.13.1",
+        "cross-env"                             : "^5.0.0",
+        "eslint"                                : "^3.19.0",
+        "eslint-config-airbnb-base"             : "^11.2.0",
+        "eslint-plugin-import"                  : "^2.2.0",
+        "mocha"                                 : "^3.4.1",
+        "nock"                                  : "^9.0.13",
+        "nyc"                                   : "^10.3.2",
+        "qs"                                    : "^6.4.0"
     },
     "engines": {
         "node": ">= 4"
