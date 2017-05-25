@@ -1,6 +1,6 @@
 # pdfkiwi-node
 
-> A node library for interacting with Pdf.kiwi API
+> A node library for interacting with [Pdf.kiwi](https://pdf.kiwi) API
 
 [![Build Status](https://travis-ci.org/pdfkiwi/node-lib.svg?branch=master)](https://travis-ci.org/pdfkiwi/node-lib)
 [![Coverage Status](https://coveralls.io/repos/github/pdfkiwi/node-lib/badge.svg?branch=master)](https://coveralls.io/github/pdfkiwi/node-lib?branch=master)
@@ -34,7 +34,7 @@ You can then use any of the methods described below.
 ### `.convertHtml()` - Convert HTML string to PDF
 
 ```js
-Pdfkiwi#convertHtml(html: String|Number, options: Object): Promise
+Pdfkiwi.convertHtml(html: String|Number, options: Object): Promise
 ```
 
 __Exemple:__
@@ -50,3 +50,8 @@ client.convertHtml('<h1>Hello world</h1>', { orientation: 'landscape' })
         console.log(err.message);
     });
 ```
+
+## Useful links
+
+- https://pdf.kiwi
+- http://doc.pdf.kiwi — API Documentation
