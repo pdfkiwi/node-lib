@@ -181,7 +181,7 @@ describe(`Pdfkiwi`, () => {
 
             promises.push(
                 expect(client.convertHtml('test'))
-                    .to.be.rejectedWith(PdfkiwiError, /-1: {an error}/)
+                    .to.be.rejectedWith(PdfkiwiError, /{an error}/)
             );
 
             nock(apiUrl, { encodedQueryParams: true })
@@ -190,7 +190,7 @@ describe(`Pdfkiwi`, () => {
 
             promises.push(
                 expect(client.convertHtml('test'))
-                    .to.be.rejectedWith(PdfkiwiError, /-1: Unknown API error: {a weird unformatted error}/)
+                    .to.be.rejectedWith(PdfkiwiError, /Unknown API error: {a weird unformatted error}/)
             );
 
             nock(apiUrl, { encodedQueryParams: true })
@@ -199,22 +199,40 @@ describe(`Pdfkiwi`, () => {
 
             promises.push(
                 expect(client.convertHtml('test'))
-                    .to.be.rejectedWith(PdfkiwiError, /-1: Unknown API error: {"invalid":"error"}/)
+                    .to.be.rejectedWith(PdfkiwiError, /Unknown API error: {"invalid":"error"}/)
             );
 
             return Promise.all(promises);
         });
 
         it(`should report correctly API errors`, () => {
-            nock(apiUrl, { encodedQueryParams: true })
+            const promises = [];
+
+            nock(apiUrl)
                 .post('/api/generator/render/')
                 .reply(500, {
                     success : false,
-                    error   : { code: 10, message: `Aucun document généré pouvant être envoyé.` }
+                    error   : { code: 10, message: `{error message}` }
                 });
 
-            return expect(client.convertHtml('test'))
-                .to.be.rejectedWith(PdfkiwiError, /10: Aucun document généré pouvant être envoyé/);
+            promises.push(
+                expect(client.convertHtml('test'))
+                    .to.be.rejectedWith(PdfkiwiError, /{error message} \(code: 10\)/)
+            );
+
+            nock(apiUrl)
+                .post('/api/generator/render/')
+                .reply(400, {
+                    success : false,
+                    error   : { code: 5 }
+                });
+
+            promises.push(
+                expect(client.convertHtml('test'))
+                    .to.be.rejectedWith(PdfkiwiError, /API error occurred, see the code. \(code: 5\)/)
+            );
+
+            return Promise.all(promises);
         });
 
         it(`should not be impacted by options object modifications after being called`, () => {

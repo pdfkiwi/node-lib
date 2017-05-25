@@ -47,18 +47,22 @@ class Pdfkiwi {
         const requestOptions = { baseUrl: this.api, form: formData };
         request.post(endpoint, requestOptions, (err, res, body) => {
             if (err) {
-                deferred.reject(new PdfkiwiError(err.message, -1));
+                deferred.reject(new PdfkiwiError(err.message));
                 return;
             }
 
             if (res.statusCode < 200 || res.statusCode >= 300) {
-                const errData = { message: `Unknown API error: ${body}`, code: -1 };
+                let errData;
                 try {
-                    Object.assign(errData, JSON.parse(body).error || {});
+                    errData = JSON.parse(body).error || {};
+                    if ((errData.code || errData.code === 0) && !errData.message) {
+                        errData.message = `API error occurred, see the code.`;
+                    }
                 } catch (_) {
                     // eslint-disable-next no-empty
                 }
 
+                errData = Object.assign({ code: null, message: `Unknown API error: ${body}` }, errData);
                 deferred.reject(new PdfkiwiError(errData.message, errData.code, res.statusCode));
                 return;
             }

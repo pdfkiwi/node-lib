@@ -30,6 +30,6 @@ describe(`PdfkiwiError`, () => {
         expect(err2.message).to.equal('{error message}');
 
         const err3 = new PdfkiwiError('{error message}', 5, 404);
-        expect(err3.message).to.equal('5: {error message}');
+        expect(err3.message).to.equal('{error message} (code: 5)');
     });
 });

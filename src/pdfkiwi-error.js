@@ -6,7 +6,7 @@ class PdfkiwiError extends Error {
         Object.defineProperty(this, 'message', {
             configurable : true,
             enumerable   : false,
-            value        : hasValidCode ? `${code}: ${message}` : message,
+            value        : hasValidCode ? `${message} (code: ${code})` : message,
             writable     : true
         });
 
