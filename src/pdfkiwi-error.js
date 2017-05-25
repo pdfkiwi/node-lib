@@ -30,6 +30,19 @@ class PdfkiwiError extends Error {
             value        : status,
             writable     : true
         });
+
+        // eslint-disable-next-line no-prototype-builtins
+        if (Error.hasOwnProperty('captureStackTrace')) {
+            Error.captureStackTrace(this, this.constructor);
+            return;
+        }
+
+        Object.defineProperty(this, 'stack', {
+            configurable : true,
+            enumerable   : false,
+            value        : (new Error(message)).stack,
+            writable     : true
+        });
     }
 }
 
