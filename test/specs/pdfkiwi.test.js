@@ -193,6 +193,15 @@ describe(`Pdfkiwi`, () => {
                     .to.be.rejectedWith(PdfkiwiError, /-1: Unknown API error: {a weird unformatted error}/)
             );
 
+            nock(apiUrl, { encodedQueryParams: true })
+                .post('/api/generator/render/')
+                .reply(500, { invalid: 'error' });
+
+            promises.push(
+                expect(client.convertHtml('test'))
+                    .to.be.rejectedWith(PdfkiwiError, /-1: Unknown API error: {"invalid":"error"}/)
+            );
+
             return Promise.all(promises);
         });
 
