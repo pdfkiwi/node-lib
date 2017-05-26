@@ -32,7 +32,7 @@ You can then use any of the methods described below.
 - All of these methods return a [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 - The promise is resolved with a `Buffer` containing the PDF binary data,  
   You can use built-in utility functions to save or download the pdf directly.  
-  (see [Built-in utility functions](#builtin-functions))
+  (see [Built-in utility functions](#built-in-utility-functions))
 
 ### `.convertHtml()` - Convert HTML string to PDF
 
@@ -53,7 +53,7 @@ client.convertHtml('<h1>Hello world</h1>', { orientation: 'landscape' })
     });
 ```
 
-## <a name="builtin-functions"></a>Built-in utility functions
+## Built-in utility functions
 
 ### `pdf.saveToFile()` — Create a PDF from PDF binary data
 
@@ -69,7 +69,7 @@ __Exemple:__
 ```js
 client.convertHtml('<h1>Hello world</h1>')
     .then(pdf.saveToFile('/path/to/my-file.pdf'))
-    .catch((err) => { console.log(err); })
+    .catch((err) => { console.log(err); });
 ```
 
 ## Useful links
