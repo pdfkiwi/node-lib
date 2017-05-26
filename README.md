@@ -9,10 +9,10 @@
 
 ```bash
 # - Npm
-npm install pdfkiwi-node --save
+npm install pdfkiwi --save
 
 # - Yarn
-yarn add pdfkiwi-node
+yarn add pdfkiwi
 ```
 
 ## Usage
