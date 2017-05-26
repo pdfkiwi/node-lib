@@ -55,14 +55,14 @@ client.convertHtml('<h1>Hello world</h1>', { orientation: 'landscape' })
 
 ## Built-in utility functions
 
-### `pdf.saveToFile()` — Create a PDF from PDF binary data
+### `pdf.saveToFile()` — Saves the generated PDF to a file.
 
 ```js
-pdf.saveToFile(fileName: String): Function
+pdf.saveToFile(filePath: String): Function
 ```
 
-- If the fileName has no extension, the `.pdf` extension will be automatically appended.
-- The fileName is resolved regarding the current working directory.
+- If the `filePath` has no extension, the `.pdf` extension will be automatically appended.
+- The `filePath` path is resolved regarding the current working directory.
 
 __Exemple:__
 

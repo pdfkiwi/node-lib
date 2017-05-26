@@ -1,15 +1,15 @@
 const fs   = require('fs');
 const path = require('path');
 
-module.exports = function (fileName) {
-    let filePath = path.resolve(fileName);
-    if (!path.extname(filePath)) {
-        filePath += '.pdf';
+module.exports = function (filePath) {
+    let _filePath = path.resolve(filePath);
+    if (!path.extname(_filePath)) {
+        _filePath += '.pdf';
     }
 
     return data => (
         new Promise((resolve, reject) => {
-            fs.writeFile(filePath, data, err => (err ? reject(err) : resolve()));
+            fs.writeFile(_filePath, data, err => (err ? reject(err) : resolve()));
         })
     );
 };
