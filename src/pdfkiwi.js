@@ -1,6 +1,5 @@
 const request       = require('request');
 const isPlainObject = require('lodash.isplainobject');
-const defer         = require('promise-defer');
 const PdfkiwiError  = require('./pdfkiwi-error');
 const Queue         = require('./utils/queue');
 
@@ -36,41 +35,40 @@ class Pdfkiwi {
     }
 
     _doRequest(endpoint, params) {
-        const deferred = defer();
-        const formData = {
-            email   : this.apiEmail,
-            token   : this.apiToken,
-            html    : params.src,
-            options : params.options || {}
-        };
+        return new Promise((resolve, reject) => {
+            const formData = {
+                email   : this.apiEmail,
+                token   : this.apiToken,
+                html    : params.src,
+                options : params.options || {}
+            };
 
-        const requestOptions = { baseUrl: this.api, form: formData, encoding: null };
-        request.post(endpoint, requestOptions, (err, res, body) => {
-            if (err) {
-                deferred.reject(new PdfkiwiError(err.message));
-                return;
-            }
-
-            if (res.statusCode < 200 || res.statusCode >= 300) {
-                let errData;
-                try {
-                    errData = JSON.parse(body.toString('utf8')).error || {};
-                    if ((errData.code || errData.code === 0) && !errData.message) {
-                        errData.message = `API error occurred, see the code.`;
-                    }
-                } catch (_) {
-                    // eslint-disable-next no-empty
+            const requestOptions = { baseUrl: this.api, form: formData, encoding: null };
+            request.post(endpoint, requestOptions, (err, res, body) => {
+                if (err) {
+                    reject(new PdfkiwiError(err.message));
+                    return;
                 }
 
-                errData = Object.assign({ code: null, message: `Unknown API error: ${body}` }, errData);
-                deferred.reject(new PdfkiwiError(errData.message, errData.code, res.statusCode));
-                return;
-            }
+                if (res.statusCode < 200 || res.statusCode >= 300) {
+                    let errData;
+                    try {
+                        errData = JSON.parse(body.toString('utf8')).error || {};
+                        if ((errData.code || errData.code === 0) && !errData.message) {
+                            errData.message = `API error occurred, see the code.`;
+                        }
+                    } catch (_) {
+                        // eslint-disable-next no-empty
+                    }
 
-            deferred.resolve(body);
+                    errData = Object.assign({ code: null, message: `Unknown API error: ${body}` }, errData);
+                    reject(new PdfkiwiError(errData.message, errData.code, res.statusCode));
+                    return;
+                }
+
+                resolve(body);
+            });
         });
-
-        return deferred.promise;
     }
 }
 
