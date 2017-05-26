@@ -72,6 +72,29 @@ client.convertHtml('<h1>Hello world</h1>')
     .catch((err) => { console.log(err); });
 ```
 
+### `pdf.sendHttpResponse()` — Returns the generated PDF in an HTTP [response](https://nodejs.org/docs/latest/api/http.html#http_class_http_serverresponse).
+
+```js
+pdf.sendHttpResponse(response: http.ServerResponse, fileName: String): Function
+```
+
+- If the `fileName` has no extension, the `.pdf` extension will be automatically appended.
+
+__Exemple:__
+
+```js
+const express = require('express');
+const app = express();
+
+app.get('/pdf', (request, response) => {
+    client.convertHtml('<h1>Hello world</h1>')
+        .then(pdf.sendHttpResponse(response, 'my-file'))
+        .catch((err) => { console.log(err); });
+});
+
+app.listen(3000);
+```
+
 ## Useful links
 
 - https://pdf.kiwi
