@@ -15,6 +15,25 @@ describe(`/utils/saveToFile()`, () => {
         mockFs.restore();
     });
 
+    it(`should throw an error when called with empty filePath`, () => {
+        const errorMessage = /No file path provided/;
+        const _wrapCall    = (filePath = undefined) => (
+            () => {
+                // eslint-disable-next-line no-new
+                saveToFile(filePath);
+            }
+        );
+
+        expect(_wrapCall()).to.throw(Error, errorMessage);
+        ['', null].forEach((wrongArg) => {
+            expect(_wrapCall(wrongArg)).to.throw(Error, errorMessage);
+        });
+
+        ['/a/b/c.pdf', 'test', 0, 1].forEach((correctArg) => {
+            expect(_wrapCall(correctArg)).to.not.throw(errorMessage);
+        });
+    });
+
     it(`should return a function`, () => {
         expect(saveToFile('my-file.pdf')).to.be.instanceof(Function);
     });
@@ -49,6 +68,7 @@ describe(`/utils/saveToFile()`, () => {
 
         _doSave('my-file.txt', 'my-file.txt');
         _doSave('my-file', 'my-file.pdf');
+        _doSave(0, '0.pdf');
 
         return Promise.all(promises);
     });
