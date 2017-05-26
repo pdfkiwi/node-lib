@@ -44,13 +44,12 @@ __Exemple:__
 
 ```js
 client.convertHtml('<h1>Hello world</h1>', { orientation: 'landscape' })
-    .then((pdf) => {
-        // pdf === PDF Binary data
-    })
+    .then(pdf.saveToFile('./my-pdf-file.pdf'))
+    .then(() => { console.log('done !'); })
     .catch((err) => {
-        // err.code   : Api error code.
-        // err.status : Http code
-        console.log(err.message);
+        // err.code   : Api error code (if available)
+        // err.status : Http code (if available)
+        console.log(err);
     });
 ```
 
