@@ -54,6 +54,25 @@ client.convertHtml('<h1>Hello world</h1>', { orientation: 'landscape' })
     });
 ```
 
+## <a name="builtin-functions"></a>Built-in utility functions
+
+### `pdf.saveToFile()` — Create a PDF from PDF binary data
+
+```js
+pdf.saveToFile(fileName: String): Function
+```
+
+- If the fileName has no extension, the `.pdf` extension will be automatically appended.
+- The fileName is resolved regarding the current working directory.
+
+__Exemple:__
+
+```js
+client.convertHtml('<h1>Hello world</h1>')
+    .then(pdf.saveToFile('/path/to/my-file.pdf'))
+    .catch((err) => { console.log(err); })
+```
+
 ## Useful links
 
 - https://pdf.kiwi
