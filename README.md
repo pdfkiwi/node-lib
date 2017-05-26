@@ -20,9 +20,9 @@ yarn add pdfkiwi-node
 Start by instantiating a client instance:
 
 ```js
-const Pdfkiwi = require('pdfkiwi');
+const pdf = require('pdfkiwi');
 
-const client = new Pdfkiwi('[api email]', ['api token']);
+const client = new pdf.Pdfkiwi('[api email]', ['api token']);
 ```
 
 You can then use any of the methods described below.
