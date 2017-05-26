@@ -44,7 +44,7 @@ class Pdfkiwi {
             options : params.options || {}
         };
 
-        const requestOptions = { baseUrl: this.api, form: formData };
+        const requestOptions = { baseUrl: this.api, form: formData, encoding: null };
         request.post(endpoint, requestOptions, (err, res, body) => {
             if (err) {
                 deferred.reject(new PdfkiwiError(err.message));
@@ -54,7 +54,7 @@ class Pdfkiwi {
             if (res.statusCode < 200 || res.statusCode >= 300) {
                 let errData;
                 try {
-                    errData = JSON.parse(body).error || {};
+                    errData = JSON.parse(body.toString('utf8')).error || {};
                     if ((errData.code || errData.code === 0) && !errData.message) {
                         errData.message = `API error occurred, see the code.`;
                     }

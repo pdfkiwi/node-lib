@@ -27,9 +27,12 @@ const client = new Pdfkiwi('[api email]', ['api token']);
 
 You can then use any of the methods described below.
 
-- All of these methods return a [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 - Available options (for the `options` parameters) are listed on [this page](https://doc.pdf.kiwi/options-list.html).
 - API error codes are listed on [this page](https://doc.pdf.kiwi/error-codes.html).
+- All of these methods return a [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+- The promise is resolved with a `Buffer` containing the PDF binary data,  
+  You can use built-in utility functions to save or download the pdf directly.  
+  (see [Built-in utility functions](#builtin-functions))
 
 ### `.convertHtml()` - Convert HTML string to PDF
 

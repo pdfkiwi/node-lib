@@ -26,6 +26,8 @@ describe(`Pdfkiwi`, () => {
         /* eslint-enable newline-per-chained-call */
     };
 
+    const _toBuffer = str => Buffer.from(str, 'utf8');
+
     it(`should throw an error when called with missing API credentials`, () => {
         const errorMessage = /Incomplete Pdf\.kiwi API credentials/;
         const _wrapCall    = (...args) => (
@@ -152,7 +154,8 @@ describe(`Pdfkiwi`, () => {
 
             promises.push(
                 expect(client.convertHtml('<span class="test">Foo</span>'))
-                    .to.be.fulfilled.and.become(`--PDF <span class="test">Foo</span>--`)
+                    .to.be.fulfilled
+                    .and.become(_toBuffer(`--PDF <span class="test">Foo</span>--`))
             );
 
             nock(apiUrl, { encodedQueryParams: true })
@@ -166,7 +169,8 @@ describe(`Pdfkiwi`, () => {
 
             promises.push(
                 expect(client.convertHtml('<h1>Bar</h1>', { foo: 'bar' }))
-                    .to.be.fulfilled.and.become(`--PDF <h1>Bar</h1> foo:bar--`)
+                    .to.be.fulfilled
+                    .and.become(_toBuffer(`--PDF <h1>Bar</h1> foo:bar--`))
             );
 
             return Promise.all(promises);
@@ -260,13 +264,13 @@ describe(`Pdfkiwi`, () => {
 
             const options = { foo: 'bar' };
             promises.push(
-                expect(client.convertHtml(`test`, options)).to.eventually.equal('ok-1'),
-                expect(client.convertHtml(`test`, options)).to.eventually.equal('ok-1')
+                expect(client.convertHtml(`test`, options)).to.become(_toBuffer('ok-1')),
+                expect(client.convertHtml(`test`, options)).to.become(_toBuffer('ok-1'))
             );
 
             options.baz = 'buz';
             promises.push(
-                expect(client.convertHtml(`test`, options)).to.eventually.equal('ok-2')
+                expect(client.convertHtml(`test`, options)).to.become(_toBuffer('ok-2'))
             );
 
             return Promise.all(promises);
