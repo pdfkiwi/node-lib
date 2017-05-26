@@ -1,0 +1,38 @@
+{
+    "extends" : "airbnb-base",
+    "env"     : { "node": true },
+    "rules"   : {
+        "indent" : ["error", 4, {
+            "SwitchCase"          : 1,
+            "VariableDeclarator"  : 1,
+            "outerIIFEBody"       : 1,
+            "FunctionDeclaration" : { "parameters": 1, "body": 1 },
+            "FunctionExpression"  : { "parameters": 1, "body": 1 }
+        }],
+        "quotes"                 : ["error", "single", { "allowTemplateLiterals": true }],
+        "quote-props"            : ["error", "consistent"],
+        "camelcase"              : ["error", { "properties": "always" }],
+        "func-style"             : ["error", "expression"],
+        "no-empty-function"      : ["error"],
+        "no-underscore-dangle"   : ["off"],
+        "class-methods-use-this" : ["off"],
+        "comma-dangle"           : ["off"],
+        "func-names"             : ["off"],
+        "no-continue"            : ["off"],
+        "no-implicit-globals"    : ["error"],
+        "key-spacing"            : ["error", {
+            "singleLine" : { "beforeColon": false, "afterColon": true },
+            "multiLine"  : { "beforeColon": false, "afterColon": true },
+            "align"      : { "beforeColon": true, "afterColon": true, "on": "colon" }
+        }],
+        "no-multi-spaces": ["error", {
+            "exceptions": {
+                "ImportDeclaration"    : true,
+                "Property"             : true,
+                "ClassProperty"        : true,
+                "VariableDeclarator"   : true,
+                "AssignmentExpression" : true
+            }
+        }]
+    }
+}

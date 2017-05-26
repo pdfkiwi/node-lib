@@ -1,0 +1,45 @@
+{
+    "name"        : "pdfkiwi",
+    "version"     : "0.1.0",
+    "description" : "A node library for interacting with Pdf.kiwi API",
+    "repository"  : "git@github.com:pdfkiwi/node-lib.git",
+    "license"     : "MIT",
+    "main"        : "./index.js",
+    "scripts"     : {
+        "build"      : "rimraf lib && babel src -d lib/",
+        "prepublish" : "yarn run build",
+        "test"       : "cross-env NODE_ENV=test nyc _mocha",
+        "test:watch" : "cross-env NODE_ENV=test mocha --watch",
+        "lint"       : "eslint --max-warnings 0 --ext .js src test/specs"
+    },
+    "dependencies": {
+        "lodash.isplainobject" : "^4.0.6",
+        "p-queue"              : "^1.0.0",
+        "request"              : "^2.81.0"
+    },
+    "devDependencies": {
+        "babel-cli"                             : "^6.24.1",
+        "babel-plugin-istanbul"                 : "^4.1.3",
+        "babel-plugin-transform-builtin-extend" : "^1.1.2",
+        "babel-preset-env"                      : "^1.5.1",
+        "chai"                                  : "^3.5.0",
+        "chai-as-promised"                      : "^6.0.0",
+        "chai-fs"                               : "^1.0.0",
+        "coveralls"                             : "^2.13.1",
+        "cross-env"                             : "^5.0.0",
+        "eslint"                                : "^3.19.0",
+        "eslint-config-airbnb-base"             : "^11.2.0",
+        "eslint-plugin-import"                  : "^2.2.0",
+        "mocha"                                 : "^3.4.1",
+        "mock-fs"                               : "^4.3.0",
+        "nock"                                  : "^9.0.13",
+        "nyc"                                   : "^10.3.2",
+        "qs"                                    : "^6.4.0",
+        "rimraf"                                : "^2.6.1",
+        "sinon"                                 : "^2.3.2",
+        "sinon-chai"                            : "^2.10.0"
+    },
+    "engines": {
+        "node": ">= 6"
+    }
+}
