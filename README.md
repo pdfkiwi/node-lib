@@ -1,6 +1,6 @@
 # pdfkiwi-node
 
-> A node library for interacting with [Pdf.kiwi](https://pdf.kiwi) API
+> A node library for interacting with [pdf.kiwi](https://pdf.kiwi) API
 
 [![Build Status](https://travis-ci.org/pdfkiwi/node-lib.svg?branch=master)](https://travis-ci.org/pdfkiwi/node-lib)
 [![Coverage Status](https://coveralls.io/repos/github/pdfkiwi/node-lib/badge.svg?branch=master)](https://coveralls.io/github/pdfkiwi/node-lib?branch=master)
@@ -98,4 +98,4 @@ app.listen(3000);
 ## Useful links
 
 - https://pdf.kiwi
-- http://doc.pdf.kiwi — API Documentation
+- https://doc.pdf.kiwi — API Documentation
