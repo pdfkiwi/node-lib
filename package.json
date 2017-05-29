@@ -1,7 +1,7 @@
 {
     "name"        : "pdfkiwi",
-    "version"     : "0.1.0",
-    "description" : "A node library for interacting with Pdf.kiwi API",
+    "version"     : "0.1.1",
+    "description" : "A node library for interacting with pdf.kiwi API",
     "repository"  : "git@github.com:pdfkiwi/node-lib.git",
     "license"     : "MIT",
     "main"        : "./index.js",
